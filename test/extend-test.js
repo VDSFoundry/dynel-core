@@ -1,4 +1,4 @@
-// Copyright (c) Visual Data Solutions, Inc. All rights reserved. This source code is released under an MIT license. See LICENSE file in the project root for complete license information.
+// Copyright (c) Visual Data Solutions, Inc. All rights reserved. This source code is distributed under the terms of the MIT license. See LICENSE file in the project root for complete license information.
 
 var chai = require('chai');
 var expect = chai.expect;
@@ -8,45 +8,70 @@ var Extend = require('../lib/extend.js');
 describe('Extend', function()
 {
     var baseObject;
-    var derivedObject;
+    var mixin;
 
-    beforeEach(function() {
+    describe('extend properties', function() {
 
-        baseObject = {
-            Value1: 'value1'
-        };
+        beforeEach(function () {
 
-        derivedObject = {
-            Value2: 'value2'
-        };
+            baseObject = {
+                BaseValue: 'base',
+                OverriddenFunc: function () {
+                    return "base";
+                },
+                CombinedFunc: function () {
+                    return "base";
+                }
+            };
+
+            mixin = {
+                MixinValue: 'mixin',
+                NewFunc: function () {
+                    return "new func";
+                },
+                OverriddenFunc: function () {
+                    return "mixin";
+                },
+                CombinedFunc: function () {
+                    return this._super() + " mixin";
+                }
+            };
+
+            Extend(baseObject, mixin);
+        });
+
+        it('should have property MixinValue from mixin', function () {
+            expect(baseObject).to.have.property('MixinValue');
+            expect(baseObject.MixinValue).to.equal('mixin');
+        });
+
+        it('should still have BaseValue property', function () {
+            expect(baseObject).to.have.property('BaseValue');
+            expect(baseObject.BaseValue).to.equal('base');
+        });
+
+        it('should return "new func" from NewFunc', function () {
+            expect(baseObject.NewFunc()).to.equal('new func');
+        });
+
+        it('should return "mixin" from OverriddenFunc', function () {
+            expect(baseObject.OverriddenFunc()).to.equal('mixin');
+        });
+
+        it('should return "base mixin" from CombinedFunc', function() {
+            expect(baseObject.CombinedFunc()).to.equal('base mixin');
+        });
     });
 
-    it('should have property Value1 from base object', function()
-    {
-        Extend(derivedObject, baseObject);
+    describe('invalid parameters', function() {
+        it('should throw Error if base object is null or undefined', function () {
+            expect(Extend.bind(null, {})).to.throw(Error);
+            expect(Extend.bind(undefined, {})).to.throw(Error);
+        });
 
-        expect(derivedObject).to.have.property('Value1');
-        expect(derivedObject.Value1).to.equal('value1');
-    });
-
-    it('should still have Value2 property', function()
-    {
-        Extend(derivedObject, baseObject);
-
-        expect(derivedObject).to.have.property('Value2');
-        expect(derivedObject.Value2).to.equal('value2');
-    });
-
-
-    it ('should throw Error if base object is null or undefined', function()
-    {
-        expect(Extend.bind(null, baseObject)).to.throw(Error);
-        expect(Extend.bind(undefined, baseObject)).to.throw(Error);
-    });
-
-    it ('should throw Error if derived object is null or undefined', function()
-    {
-        expect(Extend.bind(derivedObject, null)).to.throw(Error);
-        expect(Extend.bind(derivedObject, undefined)).to.throw(Error);
+        it('should throw Error if mixin is null or undefined', function () {
+            expect(Extend.bind({}, null)).to.throw(Error);
+            expect(Extend.bind({}, undefined)).to.throw(Error);
+        });
     });
 })
