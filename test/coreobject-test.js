@@ -3,6 +3,7 @@
 var chai = require('chai');
 var expect = chai.expect;
 var CoreObject = require('../lib/coreobject.js');
+var sinon = require('sinon');
 
 describe('CoreObject', function() {
 
@@ -59,6 +60,33 @@ describe('CoreObject', function() {
                 it('should return "extended second" from ExtendedFunc by calling _super', function () {
                     expect(secondDerivedObject.ExtendedFunc()).to.equal('extended second');
                 });
+            });
+        });
+    });
+
+    describe('init', function() {
+        describe('with derived object', function() {
+            var DerivedClass;
+            var derivedObject;
+
+            beforeEach( function() {
+                DerivedClass = CoreObject.extend({
+                    ExtendedValue: 'extended',
+                    ExtendedFunc: function() {
+                        return "extended";
+                    },
+                    init: sinon.spy()
+                });
+                derivedObject = new DerivedClass('ctor value');
+            });
+
+            it ('should call init after object is constructed', function() {
+
+                expect(derivedObject.init.callCount).to.equal(1);
+            });
+
+            it ('should pass constructor arguments to init', function() {
+                expect(derivedObject.init.calledWith('ctor value')).to.be.true;
             });
         });
     });
