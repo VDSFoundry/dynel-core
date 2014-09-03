@@ -1,0 +1,34 @@
+{
+  "name": "dynel-core",
+  "version": "0.0.1",
+  "description": "Dynamic Elements core framework",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VDSFoundry/dynel-core.git"
+  },
+  "keywords": [
+    "dynel",
+    "dynel-core",
+    "dynamic-elements"
+  ],
+  "author": "Visual Data Solutions, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VDSFoundry/dynel-core/issues"
+  },
+  "homepage": "https://github.com/VDSFoundry/dynel-core",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4",
+    "sinon": "^1.10.3"
+  }
+}
