@@ -7,59 +7,59 @@ var Extend = require('../lib/extend.js');
 
 describe('Extend', function()
 {
-    var baseObject;
-    var mixin;
-
     describe('extend properties', function() {
+        describe('with base object and mixin', function() {
+            var baseObject;
+            var mixin;
+            beforeEach(function () {
 
-        beforeEach(function () {
+                baseObject = {
+                    BaseValue: 'base',
+                    OverriddenFunc: function () {
+                        return "base";
+                    },
+                    CombinedFunc: function () {
+                        return "base";
+                    }
+                };
 
-            baseObject = {
-                BaseValue: 'base',
-                OverriddenFunc: function () {
-                    return "base";
-                },
-                CombinedFunc: function () {
-                    return "base";
-                }
-            };
+                mixin = {
+                    MixinValue: 'mixin',
+                    NewFunc: function () {
+                        return "new func";
+                    },
+                    OverriddenFunc: function () {
+                        return "mixin";
+                    },
+                    CombinedFunc: function () {
+                        return this._super() + " mixin";
+                    }
+                };
 
-            mixin = {
-                MixinValue: 'mixin',
-                NewFunc: function () {
-                    return "new func";
-                },
-                OverriddenFunc: function () {
-                    return "mixin";
-                },
-                CombinedFunc: function () {
-                    return this._super() + " mixin";
-                }
-            };
+                Extend(baseObject, mixin);
+            });
 
-            Extend(baseObject, mixin);
-        });
+            it('should have property MixinValue from mixin', function () {
+                expect(baseObject).to.have.property('MixinValue');
+                expect(baseObject.MixinValue).to.equal('mixin');
+            });
 
-        it('should have property MixinValue from mixin', function () {
-            expect(baseObject).to.have.property('MixinValue');
-            expect(baseObject.MixinValue).to.equal('mixin');
-        });
+            it('should still have BaseValue property', function () {
+                expect(baseObject).to.have.property('BaseValue');
+                expect(baseObject.BaseValue).to.equal('base');
+            });
 
-        it('should still have BaseValue property', function () {
-            expect(baseObject).to.have.property('BaseValue');
-            expect(baseObject.BaseValue).to.equal('base');
-        });
+            it('should return "new func" from NewFunc', function () {
+                expect(baseObject.NewFunc()).to.equal('new func');
+            });
 
-        it('should return "new func" from NewFunc', function () {
-            expect(baseObject.NewFunc()).to.equal('new func');
-        });
+            it('should return "mixin" from OverriddenFunc', function () {
+                expect(baseObject.OverriddenFunc()).to.equal('mixin');
+            });
 
-        it('should return "mixin" from OverriddenFunc', function () {
-            expect(baseObject.OverriddenFunc()).to.equal('mixin');
-        });
-
-        it('should return "base mixin" from CombinedFunc', function() {
-            expect(baseObject.CombinedFunc()).to.equal('base mixin');
+            it('should return "base mixin" from CombinedFunc', function () {
+                expect(baseObject.CombinedFunc()).to.equal('base mixin');
+            });
         });
     });
 
@@ -74,4 +74,4 @@ describe('Extend', function()
             expect(Extend.bind({}, undefined)).to.throw(Error);
         });
     });
-})
+});
