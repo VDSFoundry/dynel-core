@@ -48,21 +48,21 @@ describe('DynObject', function() {
         });
 
         describe('with specific change handler', function() {
-            var changeHandler;
+            var specificChangeHandler;
             beforeEach(function () {
-                changeHandler = sinon.spy();
-                dynObject.on('change:property', changeHandler);
+                specificChangeHandler = sinon.spy();
+                dynObject.on('change:property', specificChangeHandler);
             });
             describe('and property is set', function() {
                 beforeEach(function() {
                     dynObject.set('property', 'propertyValue');
                 });
                 it('should emit change event', function () {
-                    expect(changeHandler.callCount).to.equal(1);
+                    expect(specificChangeHandler.callCount).to.equal(1);
                 });
 
                 it('should provide value of property', function () {
-                    expect(changeHandler.calledWith('propertyValue')).to.be.true;
+                    expect(specificChangeHandler.calledWith('propertyValue')).to.be.true;
                 });
             });
         });
