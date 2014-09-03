@@ -68,25 +68,30 @@ describe('CoreObject', function() {
         describe('with derived object', function() {
             var DerivedClass;
             var derivedObject;
+            var initProxy;
 
             beforeEach( function() {
+                initProxy = sinon.spy();
+
                 DerivedClass = CoreObject.extend({
                     ExtendedValue: 'extended',
                     ExtendedFunc: function() {
                         return "extended";
                     },
-                    init: sinon.spy()
+                    init: function(data){
+                        initProxy(data);
+                    }
                 });
                 derivedObject = new DerivedClass('ctor value');
             });
 
             it ('should call init after object is constructed', function() {
 
-                expect(derivedObject.init.callCount).to.equal(1);
+                expect(initProxy.callCount).to.equal(1);
             });
 
             it ('should pass constructor arguments to init', function() {
-                expect(derivedObject.init.calledWith('ctor value')).to.be.true;
+                expect(initProxy.calledWith('ctor value')).to.be.true;
             });
         });
     });
