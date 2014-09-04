@@ -6,9 +6,9 @@ var expect = chai.expect;
 var Extend = require('../lib/extend.js');
 
 describe('Extend', function()
-{
-    describe('extend properties', function() {
-        describe('with base object and mixin', function() {
+{    describe('extend properties', function() {
+
+        describe('given a base object extended with a mixin', function() {
             var baseObject;
             var mixin;
             beforeEach(function () {
@@ -39,12 +39,12 @@ describe('Extend', function()
                 Extend(baseObject, mixin);
             });
 
-            it('should have property MixinValue from mixin', function () {
+            it('base object should have properties from mixin', function () {
                 expect(baseObject).to.have.property('MixinValue');
                 expect(baseObject.MixinValue).to.equal('mixin');
             });
 
-            it('should still have BaseValue property', function () {
+            it('base object should still have its own properties', function () {
                 expect(baseObject).to.have.property('BaseValue');
                 expect(baseObject.BaseValue).to.equal('base');
             });
@@ -63,8 +63,8 @@ describe('Extend', function()
         });
     });
 
-    describe('invalid parameters', function() {
-        it('should throw Error if base object is null or undefined', function () {
+    describe('given invalid parameters', function() {
+        it('Extend should throw an Error if base object is null or undefined', function () {
             expect(Extend.bind(null, {})).to.throw(Error);
             expect(Extend.bind(undefined, {})).to.throw(Error);
         });

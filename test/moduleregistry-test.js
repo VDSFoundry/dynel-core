@@ -25,7 +25,7 @@ describe('ModuleRegistry', function() {
         var FirstModuleClass;
         beforeEach(function () {
             FirstModuleClass = function(data) {
-                this.ModuleName = 'FirstModule'
+                this.ModuleName = 'FirstModule';
                 this.ConstructorData = data;
             };
             registry.register('FirstModule', FirstModuleClass);
