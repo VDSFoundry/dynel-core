@@ -27,12 +27,17 @@ describe('Module', function() {
     describe('when start is called', function() {
 
         beforeEach(function() {
-            moduleInstance.start();
+            moduleInstance.start('data');
         });
 
         it('should call setup', function() {
             expect(setupProxy.callCount).to.equal(1);
         });
+
+        it ('should pass config data to setup method', function() {
+            expect(setupProxy.calledWith('data')).to.be.true;
+        });
+
 
         describe('when stop is called', function() {
             it('should call dispose', function() {
