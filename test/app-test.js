@@ -8,8 +8,6 @@ var sinon = require('sinon');
 var App = require('../lib/app.js');
 var Module = require('../lib/module.js');
 
-
-
 /*
 App represents an application.
 
@@ -23,8 +21,6 @@ When the host application is ready to execute the application, App.start will be
 When a module is instantiated, App creates a sandbox object that it passes to the constructor along with any user data provided
 
 Sandbox will isolate the App object itself from being modified by any modules by encapsulating access to the underlying App object
-
-
  */
 
 
