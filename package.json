@@ -1,6 +1,6 @@
 {
   "name": "dynel-core",
-  "version": "0.0.21",
+  "version": "0.0.17",
   "description": "Dynamic Elements core framework",
   "main": "index.js",
   "directories": {

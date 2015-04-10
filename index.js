@@ -2,6 +2,7 @@
 
 module.exports = {
     App: require('./lib/app.js'),
+    CoreObject: require('./lib/coreobject.js'),
     DynObject: require('./lib/dynobject.js'),
     EventSource: require('./lib/eventsource.js'),
     Module: require('./lib/module.js'),
