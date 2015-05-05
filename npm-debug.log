@@ -14,18 +14,18 @@
 8 silly cache add   rawSpec: '.',
 8 silly cache add   spec: 'G:\\Projects\\DynEl\\dynel-core',
 8 silly cache add   type: 'directory' }
-9 verbose addLocalDirectory C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.25\package.tgz not in flight; packing
-10 verbose tar pack [ 'C:\\Users\\geraldf\\AppData\\Roaming\\npm-cache\\dynel-core\\0.0.25\\package.tgz',
+9 verbose addLocalDirectory C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.26\package.tgz not in flight; packing
+10 verbose tar pack [ 'C:\\Users\\geraldf\\AppData\\Roaming\\npm-cache\\dynel-core\\0.0.26\\package.tgz',
 10 verbose tar pack   'G:\\Projects\\DynEl\\dynel-core' ]
-11 verbose tarball C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.25\package.tgz
+11 verbose tarball C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.26\package.tgz
 12 verbose folder G:\Projects\DynEl\dynel-core
-13 info prepublish dynel-core@0.0.25
-14 verbose addLocalTarball adding from inside cache C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.25\package.tgz
-15 silly cache afterAdd dynel-core@0.0.25
-16 verbose afterAdd C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.25\package\package.json not in flight; writing
-17 verbose afterAdd C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.25\package\package.json written
+13 info prepublish dynel-core@0.0.26
+14 verbose addLocalTarball adding from inside cache C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.26\package.tgz
+15 silly cache afterAdd dynel-core@0.0.26
+16 verbose afterAdd C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.26\package\package.json not in flight; writing
+17 verbose afterAdd C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.26\package\package.json written
 18 silly publish { name: 'dynel-core',
-18 silly publish   version: '0.0.25',
+18 silly publish   version: '0.0.26',
 18 silly publish   description: 'Dynamic Elements core framework',
 18 silly publish   main: 'index.js',
 18 silly publish   directories: { example: 'examples', test: 'test' },
@@ -47,36 +47,36 @@
 18 silly publish      sinon: '^1.10.3' },
 18 silly publish   readme: 'dynel-core\n==========\n\n[![Build Status](https://travis-ci.org/VDSFoundry/dynel-core.svg?branch=master)](https://travis-ci.org/VDSFoundry/dynel-core)\n[![Code Climate](https://codeclimate.com/github/VDSFoundry/dynel-core/badges/gpa.svg)](https://codeclimate.com/github/VDSFoundry/dynel-core)\n\nDynamic Elements core framework\n',
 18 silly publish   readmeFilename: 'README.md',
-18 silly publish   gitHead: '8c5c3ba5a44c12fab493b42b6ebe480dda4967eb',
-18 silly publish   _id: 'dynel-core@0.0.25',
-18 silly publish   _shasum: '1528a0068fd2b6e2a13420e33d5d5804080ee08d',
+18 silly publish   gitHead: 'de5fd20aa5b9081046ef102398ae50e4895ea645',
+18 silly publish   _id: 'dynel-core@0.0.26',
+18 silly publish   _shasum: '8e8290a83b605f0e3d06443af30f530f283f1452',
 18 silly publish   _from: '.' }
 19 silly mapToRegistry name dynel-core
 20 silly mapToRegistry using default registry
 21 silly mapToRegistry registry https://registry.npmjs.org/
 22 silly mapToRegistry uri https://registry.npmjs.org/dynel-core
 23 verbose publish registryBase https://registry.npmjs.org/
-24 silly publish uploading C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.25\package.tgz
+24 silly publish uploading C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.26\package.tgz
 25 verbose request uri https://registry.npmjs.org/dynel-core
 26 verbose request sending authorization for write operation
-27 info attempt registry request try #1 at 1:43:12 PM
-28 verbose request id 3a9c9fdf2f4eb3bf
+27 info attempt registry request try #1 at 1:43:44 PM
+28 verbose request id 4d26520598f1ac4a
 29 http request PUT https://registry.npmjs.org/dynel-core
 30 http 403 https://registry.npmjs.org/dynel-core
 31 verbose headers { 'content-type': 'application/json',
 31 verbose headers   'cache-control': 'max-age=60',
 31 verbose headers   'content-length': '96',
 31 verbose headers   'accept-ranges': 'bytes',
-31 verbose headers   date: 'Tue, 05 May 2015 17:43:12 GMT',
+31 verbose headers   date: 'Tue, 05 May 2015 17:43:45 GMT',
 31 verbose headers   via: '1.1 varnish',
 31 verbose headers   connection: 'keep-alive',
-31 verbose headers   'x-served-by': 'cache-atl6226-ATL',
+31 verbose headers   'x-served-by': 'cache-iad2141-IAD',
 31 verbose headers   'x-cache': 'MISS',
 31 verbose headers   'x-cache-hits': '0',
-31 verbose headers   'x-timer': 'S1430847791.888244,VS0,VE362' }
+31 verbose headers   'x-timer': 'S1430847824.614454,VS0,VE1145' }
 32 verbose request invalidating C:\Users\geraldf\AppData\Roaming\npm-cache\registry.npmjs.org\dynel-core on PUT
 33 error publish Failed PUT 403
-34 verbose stack Error: "You cannot publish over the previously published version 0.0.25." : dynel-core
+34 verbose stack Error: "You cannot publish over the previously published version 0.0.26." : dynel-core
 34 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:254:14)
 34 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:178:14)
 34 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:344:22)
@@ -95,7 +95,7 @@
 40 error node v0.12.1
 41 error npm  v2.5.1
 42 error code E403
-43 error "You cannot publish over the previously published version 0.0.25." : dynel-core
+43 error "You cannot publish over the previously published version 0.0.26." : dynel-core
 44 error If you need help, you may report this error at:
 44 error     <http://github.com/npm/npm/issues>
 45 verbose exit [ 1, true ]
