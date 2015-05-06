@@ -13,6 +13,7 @@ describe('EventSource', function() {
     var source;
     beforeEach(function() {
         source = new EventSource();
+        source.init();
     });
 
     it('should fire the event callback when emit is called', function(done) {
