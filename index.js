@@ -2,9 +2,11 @@
 
 module.exports = {
     App: require('./lib/app.js'),
+    ChangeEmitter: require('./lib/changeemitter.js'),
     CoreObject: require('./lib/coreobject.js'),
     DynObject: require('./lib/dynobject.js'),
     EventSource: require('./lib/eventsource.js'),
+    GetSet: require('./lib/getset.js'),
     Module: require('./lib/module.js'),
     ModuleRegistry: require('./lib/moduleregistry.js')
 };
