@@ -3,6 +3,8 @@
 module.exports = {
     App: require('./lib/app.js'),
     ChangeEmitter: require('./lib/changeemitter.js'),
+    ComposeClass: require('./lib/composeclass.js'),
+    ComposeMixin: require('./lib/composemixin.js'),
     CoreObject: require('./lib/coreobject.js'),
     DynObject: require('./lib/dynobject.js'),
     EventSource: require('./lib/eventsource.js'),
