@@ -1,4 +1,4 @@
-**Dynamic Elements - Core**
+**Dynamic Elements - Core Framework**
 ===
 
 
@@ -19,16 +19,95 @@ Dynamic Elements is a JavaScript framework for building modular component-based 
 **Getting Started**
 ---
 
-**For Node.js Applications**
-
-To get started, you just need to install the dynel-core package and it's dependencies:
+To get started using Core Framework in a Node.js application, you just need to install the dynel-core package and it's dependencies:
 
     npm install dynel-core
 
+Core Framework provides the building blocks for building functional components, using a combination of classical inheritance and composition using mixins.
+
+---
+**CoreObject and Classical Inheritance**
+
+Dynamic Elements classes are derived from CoreObject. The following example demonstrates how to create a derived class from CoreObject:
+
+var CoreObject = require('dynel-core').CoreObject;
+
+    var HelloWorld = CoreObject.extend({
+        className: 'HelloWorld',
+
+	run: function() {
+		console.log('Hello World!');
+	}
+    });
+    
+    var hello = new HelloWorld();
+    hello.run();
 
 
-**For Web Applications**
+**Mixins and Composition**
 
-Dynamic Elements uses the CommonJS module specification, which is not currently supported as-is in browsers. In order to run a Dynamic Elements application in the browser, it needs to be compiled into a browser-friendly JavaScript file (or set of JavaScript files). We will eventually provide pre-compiled versions that can be used for building browser-based JavaScript applications, but for now your code needs to be compiled and packaged with the Dynamic Elements library using browserify, or another similar package.
+Dynamic Elements classes support components called mixins, which add state and/or functionality to an object. Mixins are plain old JavaScript objects.
 
+The following example demonstrates how to create a class that is composed of multiple mixins:
+ 
+    var Hello = {
+		hello: function() {
+			console.log('Hello ');
+		}
+    };
+    var World = {
+	    world: function() {
+			console.log('World!');
+		}
+	};
+	
+ 
+	 var HelloWorld = CoreObject.extend({
+		className: 'HelloWorld',
+		
+		mixins: [
+			Hello,
+			World
+		],
+		
+		run: function() {
+			this.hello();
+			this.world();
+		}
+	});
 
+	var hello = new HelloWorld();
+	hello.run();
+	
+
+Mixins can also be composed of other mixins:
+
+    var Hello = {
+		hello: function() {
+			console.log('Hello ');
+		}
+    };
+    var World = {
+	    mixins: [ 
+		Hello
+	    ],
+	    world: function() {
+			console.log('World!');
+		}
+	};
+ 
+	 var HelloWorld = CoreObject.extend({
+		className: 'HelloWorld',
+		
+		mixins: [
+			World
+		],
+		
+		run: function() {
+			this.hello();
+			this.world();
+		}
+	});
+
+	var hello = new HelloWorld();
+	hello.run();
