@@ -111,3 +111,29 @@ Mixins can also be composed of other mixins:
 
 	var hello = new HelloWorld();
 	hello.run();
+
+---
+**Event Sources**
+
+The Core Framework includes a mixin for listening for and emitting events. It is similar to the Node.js EventEmitter, but is designed as a simple mixin that can be added to Dynamic Elements objects.
+
+    var EventSource = require('dynel-core').EventSource;
+    
+    var HelloWorld = CoreObject.extend({
+	className: 'HelloWorld',
+   
+        mixins: [
+	  EventSource 
+	],
+
+	run: function() {
+		this.emit('HelloWorld', 'Hello World!');
+	}
+    });
+
+    var hello = new HelloWorld();
+    hello.on('HelloWorld', function(data) {
+       console.log(data);
+    });
+    hello.run();
+    

@@ -7,6 +7,38 @@ var expect = chai.expect;
 var CoreObject = require('../lib/coreobject.js');
 var sinon = require('sinon');
 
+describe('CoreObject', function() {
+
+    describe('extend', function() {
+
+        describe('with derived object', function() {
+            var DerivedClass;
+            var derivedObject;
+
+            var initCalled = 0;
+            var initValue;
+
+            DerivedClass = CoreObject.extend({
+                className: 'DerivedClass',
+                init: function(data) {
+                    initValue = data.value;
+                    initCalled++;
+                }
+            });
+
+            var DerivedClass2 = DerivedClass.extend({
+            });
+
+            var obj = new DerivedClass({ value: 'initValue'});
+            it('should have call init with constructor parameters', function () {
+                expect(initValue).to.be.equal('initValue');
+                expect(initCalled).to.be.equal(1);
+            });
+        })
+    })
+});
+
+
 /*
 describe('CoreObject', function() {
 
