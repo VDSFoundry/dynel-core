@@ -34,7 +34,64 @@ describe('CoreObject', function() {
                 expect(initValue).to.be.equal('initValue');
                 expect(initCalled).to.be.equal(1);
             });
+        });
+
+        describe('with derived object with 3 overrides', function() {
+            var DerivedClass;
+            var derivedObject;
+
+            var initCalled = 0;
+            var drawCalled = 0;
+            var postRenderCalled = 0;
+
+            var initDerivedCalled = 0;
+            var drawDerivedCalled = 0;
+            var postRenderDerivedCalled = 0;
+
+            var initValue;
+
+            DerivedClass = CoreObject.extend({
+                className: 'DerivedClass',
+                init: function(data) {
+                    initValue = data.value;
+                    initCalled++;
+                },
+
+                draw: function(data) {
+                    drawCalled++;
+                },
+                postRender: function(data) {
+                    postRenderCalled++;
+                }
+            });
+
+            var DerivedClass2 = DerivedClass.extend({
+                override: {
+                    init: function(data) {
+                        initDerivedCalled++;
+                    },
+
+                    draw: function(data) {
+                        drawDerivedCalled++;
+                    },
+                    postRender: function(data) {
+                        postRenderDerivedCalled++;
+                    }
+                }
+            });
+
+            var obj = new DerivedClass2({ value: 'initValue'});
+            obj.draw();
+            obj.postRender();
+
+            it('should have call init with constructor parameters', function () {
+                expect(initDerivedCalled).to.be.equal(1);
+                expect(drawDerivedCalled).to.be.equal(1);
+                expect(postRenderDerivedCalled).to.be.equal(1);
+            });
         })
+
+
     })
 });
 
