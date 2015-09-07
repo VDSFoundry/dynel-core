@@ -1,0 +1,79 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
+5 verbose publish [ '.' ]
+6 silly cache add args [ '.', null ]
+7 verbose cache add spec .
+8 silly cache add parsed spec { raw: '.',
+8 silly cache add   scope: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: '.',
+8 silly cache add   spec: 'E:\\Projects\\DynEl\\dynel-core',
+8 silly cache add   type: 'directory' }
+9 verbose addLocalDirectory C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.63\package.tgz not in flight; packing
+10 verbose tar pack [ 'C:\\Users\\geraldf\\AppData\\Roaming\\npm-cache\\dynel-core\\0.0.63\\package.tgz',
+10 verbose tar pack   'E:\\Projects\\DynEl\\dynel-core' ]
+11 verbose tarball C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.63\package.tgz
+12 verbose folder E:\Projects\DynEl\dynel-core
+13 info prepublish dynel-core@0.0.63
+14 verbose addLocalTarball adding from inside cache C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.63\package.tgz
+15 silly cache afterAdd dynel-core@0.0.63
+16 verbose afterAdd C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.63\package\package.json not in flight; writing
+17 verbose afterAdd C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.63\package\package.json written
+18 silly publish { name: 'dynel-core',
+18 silly publish   version: '0.0.63',
+18 silly publish   description: 'Dynamic Elements core framework',
+18 silly publish   main: 'index.js',
+18 silly publish   directories: { example: 'examples', test: 'test' },
+18 silly publish   scripts: { test: 'mocha --recursive -R spec' },
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'https://github.com/VDSFoundry/dynel-core.git' },
+18 silly publish   keywords: [ 'dynel', 'dynel-core', 'dynamic-elements' ],
+18 silly publish   author: { name: 'Visual Data Solutions, Inc.' },
+18 silly publish   license: 'MIT',
+18 silly publish   bugs: { url: 'https://github.com/VDSFoundry/dynel-core/issues' },
+18 silly publish   homepage: 'https://github.com/VDSFoundry/dynel-core',
+18 silly publish   dependencies: {},
+18 silly publish   devDependencies:
+18 silly publish    { chai: '^1.9.1',
+18 silly publish      grunt: '^0.4.5',
+18 silly publish      'grunt-contrib-jshint': '^0.10.0',
+18 silly publish      mocha: '^1.21.4',
+18 silly publish      sinon: '^1.10.3' },
+18 silly publish   gitHead: '296f719e2ed8f98189a0fbaed96e9fc2b55a9eec',
+18 silly publish   readme: '**Dynamic Elements - Core Framework**\n===\n\n\n[![Build Status](https://travis-ci.org/VDSFoundry/dynel-core.svg?branch=master)](https://travis-ci.org/VDSFoundry/dynel-core) [![Code Climate](https://codeclimate.com/github/VDSFoundry/dynel-core/badges/gpa.svg)](https://codeclimate.com/github/VDSFoundry/dynel-core)\n\n\nDynamic Elements is a JavaScript framework for building modular component-based applications. It can be used for building both web applications or Node.js applications. \n\n - [The Core Framework](https://github.com/VDSFoundry/dynel-core) provides the basic building blocks of a Dynamic\n   Elements application.\n - [The Data Framework](https://github.com/VDSFoundry/dynel-data) builds on the Core Framework for classes to work\n   with business data, including model objects with well-defined data\n   types, and collections.\n - [The UI Framework](https://github.com/VDSFoundry/dynel-ui) provides support for building UI elements for your\n   web applications that can be tied to your business data.\n\n\n**Getting Started**\n---\n\nTo get started using Core Framework in a Node.js application, you just need to install the dynel-core package and it\'s dependencies:\n\n    npm install dynel-core\n\nCore Framework provides the building blocks for building functional components, using a combination of classical inheritance and composition using mixins.\n\n---\n**CoreObject and Classical Inheritance**\n\nDynamic Elements classes are derived from CoreObject. The following example demonstrates how to create a derived class from CoreObject:\n\nvar CoreObject = require(\'dynel-core\').CoreObject;\n\n    var HelloWorld = CoreObject.extend({\n        className: \'HelloWorld\',\n\n\trun: function() {\n\t\tconsole.log(\'Hello World!\');\n\t}\n    });\n    \n    var hello = new HelloWorld();\n    hello.run();\n\n\n**Mixins and Composition**\n\nDynamic Elements classes support components called mixins, which add state and/or functionality to an object. Mixins are plain old JavaScript objects.\n\nThe following example demonstrates how to create a class that is composed of multiple mixins:\n \n    var Hello = {\n\t\thello: function() {\n\t\t\tconsole.log(\'Hello \');\n\t\t}\n    };\n    var World = {\n\t    world: function() {\n\t\t\tconsole.log(\'World!\');\n\t\t}\n\t};\n\t\n \n\t var HelloWorld = CoreObject.extend({\n\t\tclassName: \'HelloWorld\',\n\t\t\n\t\tmixins: [\n\t\t\tHello,\n\t\t\tWorld\n\t\t],\n\t\t\n\t\trun: function() {\n\t\t\tthis.hello();\n\t\t\tthis.world();\n\t\t}\n\t});\n\n\tvar hello = new HelloWorld();\n\thello.run();\n\t\n\nMixins can also be composed of other mixins:\n\n    var Hello = {\n\t\thello: function() {\n\t\t\tconsole.log(\'Hello \');\n\t\t}\n    };\n    var World = {\n\t    mixins: [ \n\t\tHello\n\t    ],\n\t    world: function() {\n\t\t\tconsole.log(\'World!\');\n\t\t}\n\t};\n \n\t var HelloWorld = CoreObject.extend({\n\t\tclassName: \'HelloWorld\',\n\t\t\n\t\tmixins: [\n\t\t\tWorld\n\t\t],\n\t\t\n\t\trun: function() {\n\t\t\tthis.hello();\n\t\t\tthis.world();\n\t\t}\n\t});\n\n\tvar hello = new HelloWorld();\n\thello.run();\n\n---\n**Event Sources**\n\nThe Core Framework includes a mixin for listening for and emitting events. It is similar to the Node.js EventEmitter, but is designed as a simple mixin that can be added to Dynamic Elements objects.\n\n    var EventSource = require(\'dynel-core\').EventSource;\n    \n    var HelloWorld = CoreObject.extend({\n\tclassName: \'HelloWorld\',\n   \n        mixins: [\n\t  EventSource \n\t],\n\n\trun: function() {\n\t\tthis.emit(\'HelloWorld\', \'Hello World!\');\n\t}\n    });\n\n    var hello = new HelloWorld();\n    hello.on(\'HelloWorld\', function(data) {\n       console.log(data);\n    });\n    hello.run();\n    \n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   _id: 'dynel-core@0.0.63',
+18 silly publish   _shasum: '70b0eac20354dec5232e5c4c14fe58779ed1c0af',
+18 silly publish   _from: '.' }
+19 silly mapToRegistry name dynel-core
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/dynel-core
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading C:\Users\geraldf\AppData\Roaming\npm-cache\dynel-core\0.0.63\package.tgz
+25 verbose stack Error: auth required for publishing
+25 verbose stack     at CachingRegistryClient.publish (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\publish.js:30:14)
+25 verbose stack     at C:\Program Files (x86)\nodejs\node_modules\npm\lib\publish.js:144:14
+25 verbose stack     at mapToRegistry (C:\Program Files (x86)\nodejs\node_modules\npm\lib\utils\map-to-registry.js:55:3)
+25 verbose stack     at publish_ (C:\Program Files (x86)\nodejs\node_modules\npm\lib\publish.js:114:3)
+25 verbose stack     at Array.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\slide\lib\bind-actor.js:15:8)
+25 verbose stack     at LOOP (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:15:14)
+25 verbose stack     at LOOP (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:14:28)
+25 verbose stack     at chain (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:20:5)
+25 verbose stack     at C:\Program Files (x86)\nodejs\node_modules\npm\lib\publish.js:74:5
+25 verbose stack     at RES (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\inflight\inflight.js:23:14)
+26 verbose cwd E:\Projects\DynEl\dynel-core
+27 error Windows_NT 6.3.9600
+28 error argv "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+29 error node v0.12.2
+30 error npm  v2.7.4
+31 error code ENEEDAUTH
+32 error need auth auth required for publishing
+32 error need auth You need to authorize this machine using `npm adduser`
+33 verbose exit [ 1, true ]
