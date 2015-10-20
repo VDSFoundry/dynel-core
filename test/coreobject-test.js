@@ -89,7 +89,14 @@ describe('CoreObject', function() {
                 expect(drawDerivedCalled).to.be.equal(1);
                 expect(postRenderDerivedCalled).to.be.equal(1);
             });
-        })
+
+            it ('should have classType of the constructor function', function() {
+
+                expect(obj.classType).to.be.equal(DerivedClass2);
+            });
+        });
+
+
 
 
     })
